@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Denkwerk_Content feature.
+ */
+
+include_once 'denkwerk_content.features.inc';

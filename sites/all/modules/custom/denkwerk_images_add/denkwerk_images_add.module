@@ -1,0 +1,80 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: hofer
+ * Date: 04.11.2017
+ * Time: 14:57
+ */
+
+/**
+ * @param $node
+ * @param $view_mode
+ * @param $langcode
+ * Implements hook_node_view()
+ */
+function denkwerk_images_add_node_view($node, $view_mode, $langcode) {
+	drupal_add_css(drupal_get_path('module', 'denkwerk_images_add') . '/css/denkwerk.css');
+	if($node->type == 'denkwerk_type') {
+		//add image
+		$node->content['denkwerk_image'] = array(
+			'#prefix' => '<div id="denkwerk_image">',
+			'#suffix' => '</div>',
+			'#markup' => '<img src="' . denkwerk_images_add_get_type().'"/>',
+			'#weight' => -1,
+		);
+	}
+}
+
+function denkwerk_images_add_get_type() {
+	
+	$path = arg(1,current_path());
+	switch ($path) {
+		case ("epk"):
+			$path = base_path() . 'sites/default/files/images/FotoEPK.png';
+			break;
+		case ("4"):
+			$path = base_path() . 'sites/default/files/images/FotoEPK.png';
+			break;
+		case ("5"):
+			$path = base_path() . 'sites/default/files/images/FotoEPK.png';
+			break;
+		case ("6"):
+			$path = base_path() . 'sites/default/files/images/FotoWerkzeuge.png';
+			break;
+		case ("geschäftsmodelle"):
+			$path = base_path() . 'sites/default/files/images/FotoGeschaeftsmodell.png';
+			break;
+		case ("17"):
+			$path = base_path() . 'sites/default/files/images/FotoGeschaeftsmodell.png';
+			break;
+		case ("interviewführung"):
+			$path = base_path() . 'sites/default/files/images/FotoInterview.png';
+			break;
+		case ("9"):
+			$path = base_path() . 'sites/default/files/images/FotoInterview.png';
+			break;	
+		case ("methodische_weiterentwicklung"):
+			$path = base_path() . 'sites/default/files/images/FotoNachhaltigkeit.png';
+			break;
+		case ("8"):
+			$path = base_path() . 'sites/default/files/images/FotoNachhaltigkeit.png';
+			break;
+		case ("10"):
+			$path = base_path() . 'sites/default/files/images/FotoNachhaltigkeit.png';
+			break;	
+		case ("evaluierung"):
+			$path = base_path() . 'sites/default/files/images/FotoEvaluation.png';
+			break;
+		case ("11"):
+			$path = base_path() . 'sites/default/files/images/FotoEvaluation.png';
+			break;	
+		case ("anleitungen"):
+			$path = base_path() . 'sites/default/files/images/FotoWerkzeuge.png';
+			break;
+		case("12"):
+			$path = base_path() . 'sites/default/files/images/FotoWerkzeuge.png';
+			break;
+
+	}
+	return $path;
+}
